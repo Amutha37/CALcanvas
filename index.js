@@ -1,29 +1,29 @@
 class Calculator {
-  constructor(previousOperandTextElement, currentOperandTextElement) {
-    this.previousOperandTextElement = previousOperandTextElement
-    this.currentOperandTextElement = currentOperandTextElement
+  constructor(preDisplay, curDisplay) {
+    this.preDisplay = preDisplay
+    this.curDisplay = curDisplay
     this.clear()
   }
 
   clear() {
-    this.currentOperand = ''
-    this.previousOperand = ''
+    this.curNum = ''
+    this.preNum = ''
     this.operation = undefined
   }
                           // BACKSPACE 
   delete() {
-    this.currentOperand = this.currentOperand.toString().slice(0, -1)
+    this.curNum = this.curNum.toString().slice(0, -1)
   }
                                   // VALIDATING DOUBLE DECIMALS 
   appendNumber(number) {
-    if (number === '0' && this.previousOperand ===  "/")
-     {return(this.currentOperand("ERROR"))
-   } else 
+  //   if (number === '0' && this.preNum ===  "/")
+  //    {return(this.currentOperand("ERROR"))
+  //  } else 
 
-    {if (number === '.' && this.currentOperand.includes('.'))   
+    if (number === '.' && this.curNum.includes('.'))   
     return
-    this.currentOperand = this.currentOperand.toString() + number.toString()
-  }
+    this.curNum = this.curNum.toString() + number.toString()
+  
   }                                                           // DECIDING  THE OPERATION 
   chooseOperation(operation) {
   
@@ -38,21 +38,21 @@ class Calculator {
           
         
       // error 
-    if (this.currentOperand === '') return
-    if (this.previousOperand !== '') {
+    if (this.curNum === '') return
+    if (this.preNum !== '') {
         // If NaN or Infinity returned
   
-      this.compute()
+      this.calculate()
     }
     this.operation = operation
-    this.previousOperand = this.currentOperand
-    this.currentOperand = ''
+    this.preNum = this.curNum
+    this.curNum = ''
   }
                               // CALCULATING THE INPUTS 
-  compute() {
+  calculate() {
     let computation
-    const prev = parseFloat(this.previousOperand)
-    const current = parseFloat(this.currentOperand)
+    const prev = parseFloat(this.preNum)
+    const current = parseFloat(this.curNum)
     if (isNaN(prev) || isNaN(current)) return
     switch (this.operation) {
       case '+':
@@ -70,9 +70,9 @@ class Calculator {
       default:
         return
     }
-    this.currentOperand = computation
+    this.curNum = computation
     this.operation = undefined
-    this.previousOperand = ''
+    this.preNum = ''
   }
                                   //  DISPLAY PREVIOUS VALUES
   getDisplayNumber(number) {
@@ -93,14 +93,21 @@ class Calculator {
   }
                               // UPDATING THE PREVIOUS VALUES
   updateDisplay() {
-    this.currentOperandTextElement.innerText =
-      this.getDisplayNumber(this.currentOperand)
-    if (this.operation != null) {
-      this.previousOperandTextElement.innerText =
-        `${this.getDisplayNumber(this.previousOperand)} ${this.operation}`
+    if(this.curNum === Infinity || this.curNum === -Infinity) {
+      // console.log(this.currentOperand);
+      return(this.curDisplay.innerText = "Error") ;
     } else {
-      this.previousOperandTextElement.innerText = ''
+
+
+    this.curDisplay.innerText =
+      this.getDisplayNumber(this.curNum)
+    if (this.operation != null) {
+      this.preDisplay.innerText =
+        `${this.getDisplayNumber(this.preNum)} ${this.operation}`
+    } else {
+      this.preDisplay.innerText = ''
     }
+  }
   }
 }
 
@@ -111,10 +118,10 @@ const operationButtons = document.querySelectorAll('[data-operation]')
 const equalsButton = document.querySelector('[data-equals]')
 const deleteButton = document.querySelector('[data-delete]')
 const allClearButton = document.querySelector('[data-all-clear]')
-const previousOperandTextElement = document.querySelector('[data-previous-operand]')
-const currentOperandTextElement = document.querySelector('[data-current-operand]')
+const preDisplay = document.querySelector('[data-previous-operand]')
+const curDisplay = document.querySelector('[data-current-operand]')
 
-const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement)
+const calculator = new Calculator(preDisplay, curDisplay)
 
 numberButtons.forEach(button => {
   button.addEventListener('click', () => {
@@ -131,7 +138,7 @@ operationButtons.forEach(button => {
 })
                               //EQUAL 
 equalsButton.addEventListener('click', button => {
-  calculator.compute()
+  calculator.calculate()
   calculator.updateDisplay()
 })
 
