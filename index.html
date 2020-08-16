@@ -1,38 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-    <div class="calculator">
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Calculator</title>
+      <link href="styles.css" rel="stylesheet">
+      
+    </head>
+    <body>
+      <!-- <div class="calculator-grid"> -->
+        <div class="container">
+        <div id="calculatorr">
+        <div class="result">
+          <div data-previous-operand class="previous-operand"></div>
+          <div data-current-operand class="current-operand"></div>
+        </div>
+        <div id="keyboard">
+        <button data-all-clear class="operator" class="span-two">C</button>
+        <button data-delete class="operator" class="span-two">AC</button>
+     
+        <button data-equals class="span-two" class="eque">=</button>
         
-      <div class="calculator__display" class = "viewer" id = "viewer">0</div>
-
-      <div class="calculator__keys" id ="calculator" class="calculator">
-        <button type = "button" class="key--operator"  data-ops="plus">+</button>
-        <button type = "button" class="key--operator"  data-ops="minus">-</button>
-        <button type = "button" class="key--operator"  data-ops="times">&times;</button>
-        <button type = "button" class="key--operator"  data-ops="divided by">÷</button>
-        <button type = "button" class="num" value= "7" id = "numSeven">7</button>
-        <button type = "button" class="num" data-num= "8" id = "numEight">8</button>
-        <button type = "button" class="num" data-num= "9" id = "numNine">9</button>
-        <button type = "button" class="num" data-num= "4" id = "numFour">4</button>
-        <button type = "button" class="num" data-num= "5" id = "numFive">5</button>
-        <button type = "button" class="num" data-num= "6" id = "numSix">6</button>
-        <button type = "button" class="num" data-num= "1" id = "numOne">1</button>
-        <button type = "button" class="num" data-num= "2" id = "numTwo">2</button>
-        <button type = "button" class="num" data-num= "3" id = "numThree">3</button>
-        <button type = "button" class="num" data-num= "0" id = "numZero">0</button>
-        <button type = "button" data-action="decimal" data-num= "." id = "decimal">.</button>
-        <button type = "button" data-action="clear" class= "clear" id = "clear">AC</button>
-        <button type = "button" class="key--equal" class = "equals" id = "equals" data-result="">=</button>
+        <button data-operation  class="operator" >÷</button>
+        <button data-number class="number" >1</button>
+        <button data-number class="number" >2</button>
+        <button data-number class="number" >3</button>
+       
+        <button data-operation class="operator" >*</button>
+        <button data-number class="number" >4</button>
+        <button data-number class="number" >5</button>
+        <button data-number class="number" >6</button>
+        <button data-operation class="operator" >+</button>
+        <button data-number class="number" >7</button>
+        <button data-number class="number" >8</button>
+        <button data-number class="number" >9</button>
+        <button data-operation class="operator" >-</button>
+        
+        <button data-number class="number">0</button> 
+        <button data-number class="number" >.</button>
+       
+        
       </div>
-    </div>
-  </div>
-  <script src="calculator.js"></script>
-</body>
-</html>
+      </div>
+      </div>
+      <script src="index.js" defer></script>
+    </body>
+    </html>
