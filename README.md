@@ -9,8 +9,7 @@ Structure your presentation by answering the following question:
 What process did you follow to build your project? Showcase it. 
 
 I was looking at sample codes for structuring by code.
-I have used a few resources for this, example youtube and  stackflow.com and links from canvas for the Calculator.
-I tried not to reinvent the wheel for some of the codes. I have reused the 
+I have used a few resources for this, example youtube and  stackflow.com and links from canvas for the Calculator.. 
 I first tried the traditional way of coding, that is following the functions.
 I had problem solving some issues with the formula using eval(),
 I change my code  using class and method which is similar to what we have familiar with .
